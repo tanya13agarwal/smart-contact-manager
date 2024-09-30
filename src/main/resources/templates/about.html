@@ -6,6 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    This is about page
-</body>
-</html>
+    <p>This is about page</p>
+
+    <!-- insert fragment content inside host tag --> 
+    <!-- <div th:insert="~{base :: parent('one', 'two')}"></div> -->
+    
+    <!-- replace fragment content with host tag content--> 
+    <!-- <div th:replace="~{base :: parent('one', 'two')}"></div> -->
+
+    <!-- using dynamic html content (markup)
+    yha se bhejege to about.html -->
+    <div th:replace="~{base :: parent(~{::p})}">
+        <p>this is dynamic content</p>
+    </div>
+
+</body> 

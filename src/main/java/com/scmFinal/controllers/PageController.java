@@ -29,6 +29,7 @@ public class PageController {
     @RequestMapping("/services")
     public String servicesPage(Model model){
         System.out.println("Services page loading");
+        model.addAttribute("isLogin", true);
         return "services";
     }
 

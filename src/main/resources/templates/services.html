@@ -7,5 +7,25 @@
 </head>
 <body>
     This is services page
+
+    <!-- <div th:replace="~{base :: parent(~{::section})}"></div>
+        <section><p>this is dynamic services passed to base parent</p></section>
+    </div> -->
+
+    <!-- Another Method 1 -->
+    <!-- <div th:replace="~{base :: parent(~{::#main_content})}"></div>
+        <section id="main_content"><p>this is dynamic services passed to base parent</p></section>
+    </div> -->
+
+    <!-- Another Method 2 -->
+    <!-- <div th:replace="~{base :: parent(~{::.main_content})}"></div>
+        <section class="main_content"><p>this is dynamic services passed to base parent</p></section>
+    </div> -->
+
+    <!-- Fragment expressions -->
+    <div th:replace="${isLogin} ? ~{base :: parent(~{::section})} : ~{base :: test}"></div>
+        <section><p>user logged in</p></section>
+    </div>
+
 </body>
 </html>
