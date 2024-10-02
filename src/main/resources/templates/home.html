@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,24 +9,45 @@
 </head> 
 <body>
     
-    <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-4 ">
+    <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-4 "> -->
         <!-- th is thymeleaf and data-th means the attribute is of thymeleaf (used for dynamic data) -->
-        <h1 class="text-red-600 font-semibold" data-th-text="${name}">Welcome</h1>
+        <!-- <h1 class="text-red-600 font-semibold" data-th-text="${name}">Welcome</h1> -->
         <!-- another way of writing dynamic content using thymeleaf -->
         <!-- <h1 th:text="${name}">Welcome</h1> -->
 
-        <a th:href="${googleLink}" class="text-blue-700"> click here to open </a>
+        <!-- <a th:href="${googleLink}" class="text-blue-700"> click here to open </a> -->
         <!-- <a data-th-href="${googleLink}"> click here to open </a> -->
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Necessitatibus neque tenetur nemo dolorum exercitationem, perspiciatis sint, 
             temporibus numquam dolorem, praesentium illum commodi culpa vitae? Deserunt quasi hic dolorem? 
             Corporis, maxime? Voluptatum eaque reiciendis odio unde impedit enim velit molestias fuga,
             nam nesciunt magnam recusandae expedita eligendi sapiente vel voluptas debitis.</p>
-    </div>
+    </div> -->
 
     <!-- flowbite content -->
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Home Page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nisi.</p>
+    </div>
+    <script>
+        console.log("home page script");
+    </script>
 </body>
 </html>

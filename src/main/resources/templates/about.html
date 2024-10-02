@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>This is about page</p>
+    <p>This is about page</p> -->
 
     <!-- insert fragment content inside host tag --> 
     <!-- <div th:insert="~{base :: parent('one', 'two')}"></div> -->
@@ -16,8 +16,33 @@
 
     <!-- using dynamic html content (markup)
     yha se bhejege to about.html -->
-    <div th:replace="~{base :: parent(~{::p})}">
+    <!-- <div th:replace="~{base :: parent(~{::p})}">
         <p>this is dynamic content</p>
     </div>
 
-</body> 
+</body>  -->
+
+
+
+<!-- base file k parent fragment ko hmne yha as a template use kr lia, isliye title, meta tags vgera yha ni chahiye -->
+<!DOCTYPE html>
+<!-- i want jitne bhi script tag h, vo saare yha se template p jaye -->
+<!-- ek baar script tag define kr dia mtlb multtiple bhi bhejoge to chal jayega -->
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title>About Page</title>
+</head>
+<body>
+    <div id="content">
+        <h1>About Page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nisi.</p>
+    </div>
+    <!-- dono scripts display hogi -->
+    <script>
+        console.log("about page script");
+    </script>
+    <script>
+        console.log("second script");
+    </script>
+</body>
+</html>

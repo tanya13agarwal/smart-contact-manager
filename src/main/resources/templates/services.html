@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    This is services page
+    This is services page -->
 
     <!-- <div th:replace="~{base :: parent(~{::section})}"></div>
         <section><p>this is dynamic services passed to base parent</p></section>
@@ -23,9 +23,27 @@
     </div> -->
 
     <!-- Fragment expressions -->
-    <div th:replace="${isLogin} ? ~{base :: parent(~{::section})} : ~{base :: test}"></div>
+    <!-- <div th:replace="${isLogin} ? ~{base :: parent(~{::section})} : ~{base :: test}"></div>
         <section><p>user logged in</p></section>
     </div>
 
+</body>
+</html> -->
+
+
+<!-- suppose services page pe script ni bhejni lkn about pe bhejni h, then bs yha as a default parameter bhej do -->
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{})}">
+<head>
+    <title>Services Page</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Services Page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nisi.</p>
+    </div>
+    <!-- <script>
+        console.log("services page script");z
+    </script> -->
 </body>
 </html>

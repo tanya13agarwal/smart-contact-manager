@@ -1,13 +1,58 @@
 
 <!-- parent is the fragment name, u can use this fragment anywhere in the templates -->
-<div th:fragment="parent(content)">
+<!-- <div th:fragment="parent(content)">
     <h1>This is parent fragment</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quo.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quo.</p> -->
     <!-- <h1>value of x is <span th:text="${x}"></span> </h1> -->
-    <div th:replace="${content}"></div>
+    <!-- <div th:replace="${content}"></div>
 </div>
   
-
 <div th:fragment="test">
     <h1>this is testing fragment</h1>
-</div>
+</div> -->
+
+
+
+
+
+<!-- yha ek template(called fragment) create krlia jo har page pe common use hoga -->
+
+<!-- about ya phr dusre pages apna khud ka content banayege to vo content me apna code likhege
+and that will be inserted in this template using replace in section tag, isse ek page bna jayega -->
+
+<!-- workflow: about page ye template ko call kr rha and giving its own content, which is placed in section tag here -->
+<!DOCTYPE html>
+<!-- title bhi hm baki pages se import krwake yha likh skte h -->
+<!-- if we want that jitni bhi script aaye yha template k paas, vo sb ek block m store hojaye -->
+<html lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${title}">SCM</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- common header (navbar) -->
+     <ul class="p-4 "> 
+        <li>
+            <a data-th-href="@{'/home'}">Home</a>
+        </li>
+        <li>
+            <a data-th-href="@{'/about'}">About</a>
+        </li>
+        <li>
+            <a data-th-href="@{'/services'}">Services</a>
+        </li>
+     </ul>
+
+    <!-- main content -->
+    <div class="p-4"><section data-th-replace="${content}" ></section></div>
+
+    <!-- common footer -->
+     <div><p class="p-4">footer: SCM by Tanya</p></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <th:block data-th-replace="${script}"></div>
+</body>
+</html> 
