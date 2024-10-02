@@ -3,6 +3,9 @@ package com.scmFinal.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class PageController {
@@ -33,4 +36,22 @@ public class PageController {
         return "services";
     }
 
+    // Contact Route
+    @GetMapping("/contact")
+    public String contactPage() {
+        return new String("contact");
+    }
+    
+    // Login Route
+    @GetMapping("/login")
+    public String loginPage() {
+        return new String("login");
+    }
+    
+    // Signup Route
+    @GetMapping("/register")
+    public String getMethodName() {
+        return new String("register");
+    }
+    
 }
