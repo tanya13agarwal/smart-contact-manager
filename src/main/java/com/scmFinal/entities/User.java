@@ -1,8 +1,13 @@
 package com.scmFinal.entities;
 
+import java.util.*;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,6 +45,8 @@ public class User {
     private String phoneNumber;
 
     // length of about field is increased so we use TEXT definition
+    // Alternate method:-
+    // @Column(length=1000)
     @Column(columnDefinition = "TEXT")
     private String about;
 
@@ -57,4 +64,17 @@ public class User {
     // create an enum for provider options and initially set it to self
     private Providers provider = Providers.SELF;
     private String providerUserId;
+
+    // add more fields if needed
+
+    // since one user can have multiple contacts saved, therefore 1 to N mapping
+    // since hme bi-directional mapping ni krni h which is by-default therefore 
+    // to avoid multiple mapping, hmne srf user se mapping ki h
+    // additional features - cascade type is if user is deleted, delete all its contacts also
+    // also if new user is added, all its contacts will be added automatically
+    // fetch type LAZY means jb tak hm user k contacts ko fetch ni krege tb tak no automatic query execution
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    // therefore create a list of contacts where List is of Contact schema type
+    private List<Contact> contacts = new ArrayList<>();
+
 }
