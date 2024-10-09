@@ -5,6 +5,7 @@ import java.util.*;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -63,7 +64,7 @@ public class User {
     // user signup/login options
     // SELF, GOOGLE, FACEBOOK, TWITTER, LINKEDIN, GITHUB
     // create an enum for provider options and initially set it to self
-    @Enumerated
+    @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
     private String providerUserId;
 
