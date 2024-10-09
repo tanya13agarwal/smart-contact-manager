@@ -3,6 +3,7 @@ package com.scmFinal.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,6 +14,7 @@ import com.scmFinal.helpers.MessageType;
 import com.scmFinal.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -83,13 +85,18 @@ public class PageController {
     // it is a POST method
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
     // userForm object create hoga or uske andar saari values aa jayegi 
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session) {
+    // validation messages coming from userForm.java 
+    public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, HttpSession session) {
 
         // step1- fetch form data
         // userForm k class k andar as an object sara form data recieve krege
         System.out.println(userForm);
 
         // step2- validate form data
+        if(rBindingResult.hasErrors()){
+            // errors hai mtlb aage ni jaane dege
+            return "register";
+        }
 
         // step3- save to database
         // for this purpose, we use userservice
